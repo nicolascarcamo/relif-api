@@ -1,4 +1,4 @@
-# Usar la imagen oficial de Node.js
+# Usar imagen oficial de Node.js
 FROM node:18-alpine
 
 # Establecer directorio de trabajo
@@ -10,11 +10,19 @@ COPY package*.json ./
 # Instalar dependencias
 RUN npm ci --only=production
 
-# Copiar el código fuente
+# Copiar código fuente
 COPY . .
 
-# Exponer el puerto
-EXPOSE 8080
+# Crear usuario no-root para seguridad
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S nodejs -u 1001
 
-# Comando para ejecutar la aplicación
+# Cambiar ownership de archivos
+RUN chown -R nodejs:nodejs /app
+USER nodejs
+
+# Exponer puerto
+EXPOSE 3000
+
+# Comando de inicio
 CMD ["node", "server.js"]
