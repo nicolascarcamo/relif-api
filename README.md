@@ -145,7 +145,7 @@ El servidor estará disponible en `http://localhost:3000`
 
 ## Funcionalidades de IA
 
-El endpoint `/clients/:id/generateMessage` utiliza GPT-3.5-turbo (como modelo simple y económico) para generar respuestas personalizadas considerando:
+El endpoint `/clients/:id/generateMessage` utiliza GPT-3.5-turbo (como modelo simple y económico, para evitar un mal uso de la API Key) para generar respuestas personalizadas considerando:
 
 - **Contexto del cliente**: Nombre, historial de conversación, situación crediticia
 - **Información de la automotora**: Marcas disponibles (Toyota, Nissan, Hyundai, Kia, Chevrolet, Ford)
@@ -161,9 +161,11 @@ El endpoint `/clients/:id/generateMessage` utiliza GPT-3.5-turbo (como modelo si
 **Cliente con deudas morosas:**
 > "Hola María, gracias por tu interés. Tenemos varios modelos disponibles para compra al contado. El Toyota Corolla 2024 está en promoción. ¿Cuál es tu presupuesto aproximado?"
 
-Esto fue hecho tomando en consideración reglas de Prompt Engineering para asegurar que las respuestas sean relevantes y personalizadas.
+Esto fue hecho tomando en consideración reglas de Prompt Engineering para asegurar que las respuestas sean relevantes y personalizadas. Se logró llegar a este prompt mediante un proceso de auto-refinación, pidiendole a un LLM que perfeccionara el prompt inicial:
 
-A continuación se deja el prompt directo:
+"Necesito que, mediante reglas de prompt engineering, logres entregarme un prompt para emular un agente de ventas de la industria automotriz, que sirva para responder en un chat con clientes reales. La localidad especifica es Chile. Incluye en sus propiedades: Nombre, Sucursales (dentro de Santiago, Chile), Autos en catálogo (nuevos), Recomendación de modelos, Horario y Teléfono. A su vez, queremos considerar la situación del Cliente, por lo cual necesitaremos su Nombre, RUT, y Estado deudor (propiedades que serán entregadas mediante propiedades de objetos en JavaScript). Finalmente, incluir ademas el Historial de Conversación. Manten un discurso amable y profesional. Entregame a su vez recomendaciones e ideas para incluir dentro de las instrucciones de prompt, tales como restricciones."
+
+Luego de varias iteraciones se llega al prompt final, el cual fue insertado en el código:
 
 
 "Eres Carlos Mendoza, un experimentado vendedor de autos de AutoMax Chile. Debes responder de manera natural y humana al cliente ${client.name}.
