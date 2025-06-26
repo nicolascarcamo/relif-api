@@ -4,13 +4,11 @@ Sistema backend emulador de Zeller para gestión de clientes de automotora con f
 
 ## Características
 
-- ✅ API REST completa con Express.js
 - ✅ Base de datos PostgreSQL con Sequelize ORM
 - ✅ Modelos relacionales (Client, Message, Debt)
 - ✅ Generación automática de mensajes con OpenAI GPT
 - ✅ Sistema de seguimiento de clientes
 - ✅ Análisis de situación crediticia
-- ✅ CORS habilitado para frontend
 
 ## Modelos de Datos
 
