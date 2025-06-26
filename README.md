@@ -97,6 +97,14 @@ Genera automáticamente un mensaje personalizado usando IA
 ```bash
 curl http://localhost:3000/clients/1/generateMessage
 ```
+## Servicio Cloud 
+
+Para testear el servicio en la nube, puedes usar la siguiente URL para reemplazar `localhost` en los ejemplos anteriores:
+
+```bash
+https://automotora-backend-728608041686.us-central1.run.app/
+```
+Servicio deployeado en Google Cloud Run, con la misma funcionalidad que el local.
 
 ## Instalación
 
@@ -137,7 +145,7 @@ El servidor estará disponible en `http://localhost:3000`
 
 ## Funcionalidades de IA
 
-El endpoint `/clients/:id/generateMessage` utiliza GPT-3.5-turbo para generar respuestas personalizadas considerando:
+El endpoint `/clients/:id/generateMessage` utiliza GPT-3.5-turbo (como modelo simple y económico) para generar respuestas personalizadas considerando:
 
 - **Contexto del cliente**: Nombre, historial de conversación, situación crediticia
 - **Información de la automotora**: Marcas disponibles (Toyota, Nissan, Hyundai, Kia, Chevrolet, Ford)
@@ -152,6 +160,8 @@ El endpoint `/clients/:id/generateMessage` utiliza GPT-3.5-turbo para generar re
 
 **Cliente con deudas morosas:**
 > "Hola María, gracias por tu interés. Tenemos varios modelos disponibles para compra al contado. El Toyota Corolla 2024 está en promoción. ¿Cuál es tu presupuesto aproximado?"
+
+Esto fue hecho tomando en consideración reglas de Prompt Engineering para asegurar que las respuestas sean relevantes y personalizadas.
 
 ## Datos de Ejemplo
 
