@@ -235,7 +235,11 @@ relif-api/
 │   └── seedData.js         # Datos de ejemplo
 ├── server.js               # Punto de entrada principal
 ├── package.json            # Dependencias y scripts
-├── .env            # Variables de entorno
+├── .env.example          # Ejemplo de archivo de variables de entorno
+├── .env.production          # Variables de entorno para producción (Google Run)
+├── .gitignore             # Archivos a ignorar por Git
+├── .dockerignore          # Archivos a ignorar por Docker
+├── Dockerfile              # Configuración de Docker
 └── README.md               # Documentación
 
 ```
