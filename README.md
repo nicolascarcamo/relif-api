@@ -267,3 +267,7 @@ Para verificar que todo funciona:
 4. Crear nuevo cliente: `POST /clients`
 5. Añadir mensaje a cliente: `POST /clients/1/message`
 6. Buscar clientes para follow-up: `GET /clients-to-do-follow-up`
+
+## Mejoras
+
+El producto actual puede mejorarse de varias maneras. Primeramente, estableciendo una interfaz gráfica, un frontend amigable con el cliente. Por otro lado, desde el funcionamiento, se puede humanizar aún mas el robot entregandole datos de entrenamiento con casos reales, y realizando un RAG o Fine-Tuning de manera que pueda establecer criterios de negociación pertinentes y sepa derivar a un agente real en caso de necesitarlo. Ahondando mas, se puede a su vez generar un caché para consultas repetidas, de manera de no sobrecargar el uso del API de OpenAI y reducir costos para el funcionamiento de Zeller. Por último, creo que también puede ser pertinente el uso de Tablas, Mapas, e Histogramas para informar al usuario de mejor manera respecto al flujo de cambios en los precios, sucursales mas cercanas, y comparativa entre modelos de autos.
